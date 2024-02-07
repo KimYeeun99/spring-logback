@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
     <!-- Profile 정보 -->
     <springProperty name="profile" source="spring.profiles.active"/>
@@ -12,8 +11,8 @@
     <property name="FILE_LOG_PATTERN"
               value="[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %5level %logger - %msg%n"/>
 
-    <property name="LOG_DIRECTORY" value="/log/">
-    <property name="LOG_FILE" value="log-file-${profile}"/>
+<!--    <property name="LOG_DIRECTORY" value="/log/" />
+    <property name="LOG_FILE" value="log-file-${profile}"/>-->
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -21,7 +20,7 @@
         </encoder>
     </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
             <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
@@ -30,7 +29,7 @@
             <maxFileSize>100MB</maxFileSize>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
-    </appender>
+    </appender>-->
 
     <!-- DB정보에 대한 logger 설정 -->
     <logger name="jdbc.audit" level="OFF"/>
@@ -44,9 +43,9 @@
         <springProfile name="local">
             <appender-ref ref="CONSOLE"/>
         </springProfile>
-        <springProfile name="!local">
+<!--        <springProfile name="!local">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
-        </springProfile>
+        </springProfile>-->
     </root>
 </configuration>
